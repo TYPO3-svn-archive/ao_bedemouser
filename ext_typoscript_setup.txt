@@ -1,0 +1,22 @@
+# Loading AO BE demo user
+#
+plugin.tx_aobedemouser_pi1 {
+
+# Template file
+templateFile = {$plugin.tx_aobedemouser_pi1.TEMPLATEFILE}
+
+	createBEdemoUser{
+		dbhost = {$plugin.tx_aobedemouser_pi1.DBHOST}
+		dbname = {$plugin.tx_aobedemouser_pi1.DBNAME}
+		dbuser = {$plugin.tx_aobedemouser_pi1.DBUSER}
+		dbpassword = {$plugin.tx_aobedemouser_pi1.DBPASSWORD}
+		recordstorage = {$plugin.tx_aobedemouser_pi1.RECORDSTORAGE}
+		begroup = {$plugin.tx_aobedemouser_pi1.BEGROUP}
+	}
+
+	sendMail{
+		demourl = {$plugin.tx_aobedemouser_pi1.DEMOURL}
+		sendername = {$plugin.tx_aobedemouser_pi1.SENDERNAME}
+		senderemail = {$plugin.tx_aobedemouser_pi1.SENDEREMAIL}
+	}
+}

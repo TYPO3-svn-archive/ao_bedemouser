@@ -1,0 +1,46 @@
+<!DOCTYPE PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <title>AO BE demo user</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+</head>
+<body>
+<!-- ###DISPLAY_FORM### begin -->
+<table class="aobedemouser" cellspacing="0" cellpadding="3" border="0" align="center">
+<form action="###FORM_ACTION###" method="POST" enctype="application/x-www-form-urlencoded">
+	<input type="hidden" name="no_cache" value="1">
+	<input type="hidden" name="###PRIVACY_FIELD_NAME###" value="0">
+	<tr valign="top">
+		<td colspan="2"><p>###INTRODUCTORY_MESSAGE###<br />&nbsp;</p></td>
+	</tr>
+	<tr valign="top">
+		<td id="aobedemouserCol1"><p>###USERNAME_LABEL###</p></td>
+		<td><p><input type="text" name="###USERNAME_FIELD_NAME###" size="30" maxlength="20" value="###USERNAME_FIELD_VALUE###">###USERNAME_ERROR###</p></td>
+	</tr>
+	<tr valign="top">
+		<td id="aobedemouserCol1"><p>###EMAIL_LABEL###</p></td>
+		<td><p><input type="text" name="###EMAIL_FIELD_NAME###" size="30" maxlength="100" value="###EMAIL_FIELD_VALUE###">###EMAIL_ERROR###</p></td>
+	</tr>
+	<tr valign="top">
+		<td id="aobedemouserCol1"><p>###PRIVACY_LABEL###</p></td>
+		<td><p><input type="checkbox" name="###PRIVACY_FIELD_NAME###" value="1"###PRIVACY_FIELD_CHECKED###></p></td>
+	</tr>
+	<tr valign="top">
+		<td colspan="2"><p>&nbsp;<br />###PRIVACY_MESSAGE###<br />&nbsp;</p></td>
+	</tr>
+	<tr align="center" valign="top">
+		<td colspan="2"><input type="submit" name="###SUBMIT_BUTTON_FIELD_NAME###" value="###SUBMIT_BUTTON_LABEL###"></td>
+	</tr>
+</form>
+</table>
+<!-- ###DISPLAY_FORM### end -->
+
+<!-- ###DISPLAY_RESULT### begin -->
+<table class="aobedemouser" cellspacing="0" cellpadding="3" border="0" align="center" align="center">
+	<tr valign="top">
+		<td><p>###RESULT_MESSAGE###</p></td>
+	</tr>
+</table>
+<!-- ###DISPLAY_RESULT### end -->
+</body>
+</html>

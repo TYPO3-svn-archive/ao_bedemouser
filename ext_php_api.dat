@@ -1,0 +1,122 @@
+a:2:{s:4:"meta";a:2:{s:5:"title";s:15:"AO BE demo user";s:5:"descr";s:123:"This extension allows any visitor of your website to create a BE demo account to try out the amazing features Typo3 offers.";}s:5:"files";a:2:{s:33:"pi1/class.tx_aobedemouser_pi1.php";a:3:{s:8:"filesize";i:24208;s:6:"header";a:5:{s:4:"text";s:63:"
+ 
+Plugin 'AO BE demo user' for the 'ao_bedemouser' extension.
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:1:{i:0;s:41:"@author	Andreas Otto <andreas@php4win.de>";}s:11:"other_index";a:1:{s:7:"@author";a:1:{i:0;s:33:"Andreas Otto <andreas@php4win.de>";}}}s:3:"DAT";a:7:{i:1;a:7:{s:6:"header";s:48:"class tx_aobedemouser_pi1 extends tslib_pibase {";s:5:"class";i:1;s:11:"parentClass";s:19:"tx_aobedemouser_pi1";s:7:"content";a:2:{i:0;s:232:"	var $prefixId = 'tx_aobedemouser_pi1';		// Same as class name
+	var $scriptRelPath = 'pi1/class.tx_aobedemouser_pi1.php';	// Path to this script relative to the extension dir.
+	var $extKey = 'ao_bedemouser';	// The extension key.
+
+	";i:1;i:-1;}s:12:"content_size";i:232;s:13:"content_lines";i:4;s:6:"atLine";i:40;}i:3;a:7:{s:6:"header";s:31:"function main($content,$conf) {";s:11:"parentClass";s:19:"tx_aobedemouser_pi1";s:4:"cDat";a:5:{s:4:"text";s:1:"
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:8:"$content";i:1;s:6:"string";}i:1;a:2:{i:0;s:5:"$conf";i:1;s:6:"string";}}s:6:"return";a:2:{i:0;s:8:"$content";i:1;s:0:"";}s:5:"other";a:1:{i:0;s:50:"@desc Main function decides what needs to be done.";}s:11:"other_index";a:1:{s:5:"@desc";a:1:{i:0;s:44:"Main function decides what needs to be done.";}}}s:7:"content";a:2:{i:0;s:507:"		$this->conf = $conf;
+		$this->pi_setPiVarDefaults();
+		$this->pi_loadLL();
+
+		define ('AO_DB_USER',	$this->conf['createBEdemoUser.']['dbuser']);
+		define ('AO_DB_PWD',	$this->conf['createBEdemoUser.']['dbpassword']);
+		define ('AO_DB_HOST',	$this->conf['createBEdemoUser.']['dbhost']);
+		define ('AO_DB_NAME',	$this->conf['createBEdemoUser.']['dbname']);
+		define ('AO_DB_T
+[...]
+n'])){
+			$content = $this->ao_displayResult();
+		}else{
+			$content = $this->ao_displayForm();
+		}
+
+		return $content;
+	}
+
+	";i:1;i:1;}s:12:"content_size";i:941;s:13:"content_lines";i:24;s:6:"atLine";i:51;}i:5;a:7:{s:6:"header";s:42:"function ao_displayForm($error_class='') {";s:11:"parentClass";s:19:"tx_aobedemouser_pi1";s:4:"cDat";a:5:{s:4:"text";s:1:"
+";s:5:"param";a:1:{i:0;a:2:{i:0;s:12:"$error_class";i:1;s:6:"string";}}s:6:"return";a:2:{i:0;s:8:"$content";i:1;s:0:"";}s:5:"other";a:1:{i:0;s:92:"@desc		Function ao_displayForm loads the form and displays error messages in case of errors.";}s:11:"other_index";a:1:{s:5:"@desc";a:1:{i:0;s:85:"Function ao_displayForm loads the form and displays error messages in case of errors.";}}}s:7:"content";a:2:{i:0;s:507:"		$content = '';
+
+		$template = $this->cObj->getSubpart($this->templateCode, '###DISPLAY_FORM###');
+
+		$markerArray = array();
+
+		$markerArray['###FORM_ACTION###']				= $this->pi_getPageLink($GLOBALS['TSFE']->id);
+		$markerArray['###INTRODUCTORY_MESSAGE###']		= $this->pi_getLL('introductory_message');
+		$markerArray['###USERNAME_LABEL###']			= $this->pi_getLL('username');
+
+[...]
+is->cObj->substituteMarkerArrayCached($template, $markerArray);
+
+		//t3lib_div::debug($this->conf);
+
+		return $content;
+	}
+
+	";i:1;i:1;}s:12:"content_size";i:2137;s:13:"content_lines";i:56;s:6:"atLine";i:81;}i:7;a:7:{s:6:"header";s:29:"function ao_displayResult() {";s:11:"parentClass";s:19:"tx_aobedemouser_pi1";s:4:"cDat";a:5:{s:4:"text";s:1:"
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:8:"$content";i:1;s:0:"";}s:5:"other";a:1:{i:0;s:202:"@desc Function ao_displayResult takes the data from ao_displayForm and validates it. On success ao_createDemoAccount is called. On error ao_displayForm is called with $error_class as optional parameter.";}s:11:"other_index";a:1:{s:5:"@desc";a:1:{i:0;s:196:"Function ao_displayResult takes the data from ao_displayForm and validates it. On success ao_createDemoAccount is called. On error ao_displayForm is called with $error_class as optional parameter.";}}}s:7:"content";a:2:{i:0;s:507:"		$content = '';
+
+		$error = FALSE;
+		$this->piVars['DATA']['password'] = $this->ao_generatePassword();
+
+		if(empty($this->piVars['DATA']['username'])){
+			$error = TRUE;
+			$error_class['username'] = TRUE;
+		}
+
+		if(ereg('^[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+'.'@'.'[-!#$%&\'*+\\/0-9=?A-Z^_`a-z{|}~]+\.'.'[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+$',$this->piVars['DATA']['email']) 
+[...]
+To: $from\n");
+
+		}else if ($error == TRUE){
+			$content = $this->ao_displayForm($error_class);
+		}
+
+		return $content;
+	}
+
+	";i:1;i:1;}s:12:"content_size";i:1829;s:13:"content_lines";i:60;s:6:"atLine";i:142;}i:9;a:7:{s:6:"header";s:33:"function ao_createDemoAccount() {";s:11:"parentClass";s:19:"tx_aobedemouser_pi1";s:4:"cDat";a:5:{s:4:"text";s:1:"
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:8:"$content";i:1;s:0:"";}s:5:"other";a:1:{i:0;s:184:"@desc Function createDemoAccount checks for duplicate demo be users. If none are found the demo account will be created. If a duplicate record is found createDemoAccount returns FALSE.";}s:11:"other_index";a:1:{s:5:"@desc";a:1:{i:0;s:178:"Function createDemoAccount checks for duplicate demo be users. If none are found the demo account will be created. If a duplicate record is found createDemoAccount returns FALSE.";}}}s:7:"content";a:2:{i:0;s:507:"		$retVal = TRUE;
+
+		$db = DB::connect(AO_DB_DSN);
+		if (DB::isError($db)) {
+			die($db->getMessage());
+		}else{
+			$query = sprintf("SELECT username FROM %s WHERE username = '%s'",
+							'be_users',
+							$this->piVars['DATA']['username']
+							);
+
+			$res = $db->query($query);
+			if ($res->numRows() > 0){
+				$retVal = FALSE;
+			}else{
+				$sql = "INSERT INTO %s (uid,
+[...]
+'DATA']['email'],
+								$this->piVars['DATA']['privacy']);
+				$res = $db->query($query);
+			}
+		}
+
+		return $retVal;
+	}
+
+	";i:1;i:1;}s:12:"content_size";i:1802;s:13:"content_lines";i:47;s:6:"atLine";i:207;}i:11;a:4:{s:6:"header";s:32:"function ao_generatePassword() {";s:11:"parentClass";s:19:"tx_aobedemouser_pi1";s:4:"cDat";a:5:{s:4:"text";s:1:"
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:15:"$securePassword";i:1;s:0:"";}s:5:"other";a:1:{i:0;s:64:"@desc Function ao_generatePassword generate AOL style passwords.";}s:11:"other_index";a:1:{s:5:"@desc";a:1:{i:0;s:58:"Function ao_generatePassword generate AOL style passwords.";}}}s:6:"atLine";i:259;}i:13;a:7:{s:6:"header";s:27:"function ao_getWordlist() {";s:11:"parentClass";s:19:"tx_aobedemouser_pi1";s:4:"cDat";a:5:{s:4:"text";s:1:"
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:9:"$wordList";i:1;s:0:"";}s:5:"other";a:1:{i:0;s:72:"@desc Function ao_getWordlist is a helper function to ao_createPassword.";}s:11:"other_index";a:1:{s:5:"@desc";a:1:{i:0;s:66:"Function ao_getWordlist is a helper function to ao_createPassword.";}}}s:7:"content";a:2:{i:0;s:507:"		// slightly modified data from http://www.rick.harrison.net/annex/specialeng.txt - many thanks Rick Harrison!
+		$wordList = Array( 'a', 'able', 'about', 'above', 'accept', 'accident', 'accuse', 'across', 'act',
+		'activist', 'actor', 'add', 'administration', 'admit', 'advise', 'affect', 'afraid', 'after', 'again',
+		'against', 'age', 'agency', 'aggression', 'ago', 'agree
+[...]
+TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/ao_bedemouser/pi1/class.tx_aobedemouser_pi1.php'])	{
+	include_once(XCLASS);
+}
+
+?>
+";i:1;i:1;}s:12:"content_size";i:13788;s:13:"content_lines";i:127;s:6:"atLine";i:286;}}}s:41:"pi1/class.tx_aobedemouser_pi1_wizicon.php";a:3:{s:8:"filesize";i:1934;s:6:"header";a:5:{s:4:"text";s:36:"
+ 
+Class that adds the wizard icon.
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:1:{i:0;s:41:"@author	Andreas Otto <andreas@php4win.de>";}s:11:"other_index";a:1:{s:7:"@author";a:1:{i:0;s:33:"Andreas Otto <andreas@php4win.de>";}}}s:3:"DAT";a:2:{i:1;a:4:{s:6:"header";s:35:"class tx_aobedemouser_pi1_wizicon {";s:5:"class";i:1;s:11:"parentClass";s:27:"tx_aobedemouser_pi1_wizicon";s:6:"atLine";i:30;}i:3;a:6:{s:6:"header";s:29:"function includeLocalLang()	{";s:11:"parentClass";s:27:"tx_aobedemouser_pi1_wizicon";s:7:"content";a:2:{i:0;s:259:"		include(t3lib_extMgm::extPath('ao_bedemouser').'locallang.php');
+		return $LOCAL_LANG;
+	}
+}
+
+
+
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/ao_bedemouser/pi1/class.tx_aobedemouser_pi1_wizicon.php'])	{
+	include_once(XCLASS);
+}
+
+?>";i:1;i:0;}s:12:"content_size";i:259;s:13:"content_lines";i:11;s:6:"atLine";i:51;}}}}}

@@ -1,0 +1,29 @@
+# cat=plugin.aobedemouser; type=string; label=Template file: The path and name of the template file you wish to use. Default: typo3conf/ext/ao_bedemouser/pi1/aobedemouser_template.html.
+plugin.tx_aobedemouser_pi1.TEMPLATEFILE = typo3conf/ext/ao_bedemouser/pi1/aobedemouser_template.html
+
+# cat=plugin.aobedemouser; type=string; label=DB host: The name of the host where the DB of the demo system resides. Default: localhost.
+plugin.tx_aobedemouser_pi1.DBHOST = localhost
+
+# cat=plugin.aobedemouser; type=string; label=DB name: The DB name. Default: empty.
+plugin.tx_aobedemouser_pi1.DBNAME = typolab_db01
+
+# cat=plugin.aobedemouser; type=string; label=DB user: The user we want to connect to the DB with. Default: empty.
+plugin.tx_aobedemouser_pi1.DBUSER = 
+
+# cat=plugin.aobedemouser; type=string; label=DB password: The password that belongs to the above mentioned user. Default: empty.
+plugin.tx_aobedemouser_pi1.DBPASSWORD =
+
+# cat=plugin.aobedemouser; type=string; label=Record storage: The PID of the record storage page you use. Default: empty.
+plugin.tx_aobedemouser_pi1.RECORDSTORAGE =
+
+# cat=plugin.aobedemouser; type=string; label=BE group: The UID of the BE group the demo user should belong to. Default: empty.
+plugin.tx_aobedemouser_pi1.BEGROUP =
+
+# cat=plugin.aobedemouser; type=string; label=Demo URL: The URL to logon to the demo system. Default: http://www.example.com/typo3/.
+plugin.tx_aobedemouser_pi1.DEMOURL = http://www.example.com/typo3/
+
+# cat=plugin.aobedemouser; type=string; label=Sender name: The sender name of the confirmation eMail. Default: empty.
+plugin.tx_aobedemouser_pi1.SENDERNAME =
+
+# cat=plugin.aobedemouser; type=string; label=Sender eMail: The eMail address of the sender. Default: info@example.com.
+plugin.tx_aobedemouser_pi1.SENDEREMAIL = info@example.com
